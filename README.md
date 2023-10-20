@@ -5,7 +5,7 @@
 ## 클래스와 구조체
 클래스와 구조체의 이름에는 UpperCamelCase 사용합니다.
 ```swift
-class Name{
+class Name {
 // class definition goes here
 }
 
