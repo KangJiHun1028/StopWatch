@@ -7,12 +7,18 @@
 
 import SnapKit
 import UIKit
+
 class StopWatchController: UIViewController {
     let stopWatchUIView = StopWatchUIView()
-
+    var tableView = UITableView()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellTypeIdentifier")
+
         setupUI()
     }
 
@@ -20,6 +26,7 @@ class StopWatchController: UIViewController {
         view.addSubview(stopWatchUIView.countLabel)
         view.addSubview(stopWatchUIView.startButton)
         view.addSubview(stopWatchUIView.stopButton)
+        view.addSubview(tableView)
 
         stopWatchUIView.countLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(250)
@@ -38,6 +45,26 @@ class StopWatchController: UIViewController {
             make.centerY.equalTo(view.snp.centerY)
             make.height.equalTo(50)
             make.width.equalTo(150)
+
+            tableView.snp.makeConstraints { make in
+                make.top.equalTo(stopWatchUIView.stopButton.snp.bottom).offset(20)
+                make.leading.trailing.equalToSuperview()
+                make.bottom.equalToSuperview() // 화면에 하단에서 부터 조정
+            }
         }
+    }
+}
+
+extension StopWatchController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 7
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellTypeIdentifier", for: indexPath)
+
+        cell.textLabel!.text = "Cell text"
+
+        return cell
     }
 }
