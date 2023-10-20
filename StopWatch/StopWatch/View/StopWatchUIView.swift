@@ -10,7 +10,7 @@ import SnapKit
 import UIKit
 
 class StopWatchUIView: UIViewController {
-    public lazy var startButton: UIButton = {
+    lazy var startButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Start", for: .normal)
         button.setTitleColor(UIColor.green, for: .normal)
@@ -18,10 +18,19 @@ class StopWatchUIView: UIViewController {
 
     }()
 
-    public lazy var stopButton: UIButton = {
+    lazy var stopButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Stop / Reset", for: .normal)
         button.setTitleColor(UIColor.red, for: .normal)
         return button
+    }()
+
+    lazy var countLabel: UILabel = {
+        var label = UILabel()
+        label.text = "00 : 00 : 00"
+        label.textAlignment = .center
+        label.font = .systemFont(ofSize: 40)
+        label.textColor = .black
+        return label
     }()
 }

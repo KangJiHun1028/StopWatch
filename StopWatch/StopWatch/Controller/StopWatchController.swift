@@ -8,7 +8,7 @@
 import SnapKit
 import UIKit
 class StopWatchController: UIViewController {
-    let stopwatchUIView = StopWatchUIView()
+    let stopWatchUIView = StopWatchUIView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,17 +17,23 @@ class StopWatchController: UIViewController {
     }
 
     private func setupUI() {
-        view.addSubview(stopwatchUIView.startButton)
-        view.addSubview(stopwatchUIView.stopButton)
+        view.addSubview(stopWatchUIView.countLabel)
+        view.addSubview(stopWatchUIView.startButton)
+        view.addSubview(stopWatchUIView.stopButton)
 
-        stopwatchUIView.startButton.snp.makeConstraints { make in
+        stopWatchUIView.countLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(250)
+            make.centerX.equalTo(view.snp.centerX)
+        }
+
+        stopWatchUIView.startButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-200)
             make.centerY.equalTo(view.snp.centerY)
             make.height.equalTo(50)
             make.width.equalTo(150)
         }
 
-        stopwatchUIView.stopButton.snp.makeConstraints { make in
+        stopWatchUIView.stopButton.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(200)
             make.centerY.equalTo(view.snp.centerY)
             make.height.equalTo(50)
