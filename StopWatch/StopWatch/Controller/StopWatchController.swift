@@ -8,7 +8,7 @@
 import SnapKit
 import UIKit
 class StopWatchController: UIViewController {
-    let stopwatchUIView = StopWatchUIView()
+    let stopWatchUIView = StopWatchUIView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
