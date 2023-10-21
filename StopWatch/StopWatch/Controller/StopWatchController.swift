@@ -13,6 +13,7 @@ class StopWatchController: UIViewController {
     var tableView = UITableView()
     var mainTimer: Timer?
     var timeCount: Int = 0
+    var isStopped: Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -64,13 +65,27 @@ class StopWatchController: UIViewController {
         button.tag = tag.rawValue
     }
     
-    @objc func buttonAction(_ button: UIButton) throws {
+    @objc func buttonAction(_ button: UIButton) {
+        do {
+            try handleButtonAction(button)
+        } catch let MyError.buttonTagError(message) {
+            print(message)
+        } catch {
+            print("알 수 없는 오류 발생")
+        }
+    }
+
+    func handleButtonAction(_ button: UIButton) throws {
         if let select = ButtonTag(rawValue: button.tag) {
             switch select {
             case .start:
                 startAction()
             case .stop:
-                stopAction()
+                if isStopped {
+                    resetAction()
+                } else {
+                    stopAction()
+                }
             }
         } else {
             throw MyError.buttonTagError("태그 오류 입니다.")
@@ -89,38 +104,51 @@ class StopWatchController: UIViewController {
             }
         })
     }
-    
+        
     func stopAction() {
         print("stop")
+        mainTimer?.invalidate()
+        stopWatchUIView.startButton.isEnabled = true
+        stopWatchUIView.stopButton.isEnabled = true
+        isStopped = true
+    }
+
+    func resetAction() {
+        print("reset")
+        mainTimer?.invalidate()
+        timeCount = 0
+        let timeString = makeTimeLabel(count: timeCount)
+        stopWatchUIView.countLabel.text = timeString
         stopWatchUIView.startButton.isEnabled = true
         stopWatchUIView.stopButton.isEnabled = false
+        isStopped = false
     }
-    
+
     func buttonInit() {
         setButton(button: stopWatchUIView.startButton, tag: .start)
         setButton(button: stopWatchUIView.stopButton, tag: .stop)
     }
-    
+        
     func makeTimeLabel(count: Int) -> (String) {
         let hundredthSec = count % 100
         let sec = (count / 100) % 60
         let min = (count / 100) / 60
-        
+            
         let secString = "\(sec)".count == 1 ? "0\(sec)" : "\(sec)"
         let minString = "\(min)".count == 1 ? "0\(min)" : "\(min)"
         let hundredthSecString = "\(hundredthSec)".count == 1 ? "0\(hundredthSec)" : "\(hundredthSec)"
         return "\(minString):\(secString):\(hundredthSecString)"
     }
 }
-
+    
 extension StopWatchController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
-
+        
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: StopWatchTableViewCell.identifier, for: indexPath)
-
+            
         return cell
     }
 }
