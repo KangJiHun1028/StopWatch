@@ -64,20 +64,16 @@ class StopWatchController: UIViewController {
         button.tag = tag.rawValue
     }
     
-    @objc func buttonAction(_ button: UIButton) {
+    @objc func buttonAction(_ button: UIButton) throws {
         if let select = ButtonTag(rawValue: button.tag) {
-            do {
-                switch select {
-                case .start:
-                    try startAction()
-                case .stop:
-                    try stopAction()
-                }
-            } catch {
-                print("오류가 발생했습니다.")
+            switch select {
+            case .start:
+                startAction()
+            case .stop:
+                stopAction()
             }
         } else {
-            print("알 수 없는 버튼 태그입니다.")
+            throw MyError.buttonTagError("태그 오류 입니다.")
         }
     }
 

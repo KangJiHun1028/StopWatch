@@ -13,6 +13,7 @@
 		E73D419D2AE2480800DD4680 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E73D419C2AE2480800DD4680 /* Assets.xcassets */; };
 		E73D41A02AE2480800DD4680 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E73D419E2AE2480800DD4680 /* LaunchScreen.storyboard */; };
 		E79035F72AE2F6D200384005 /* ButtonTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79035F62AE2F6D200384005 /* ButtonTag.swift */; };
+		E7C1A1CD2AE3AA670021155F /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C1A1CC2AE3AA670021155F /* Error.swift */; };
 		E7F87D4D2AE2CED000713A1C /* StopWatchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F87D4C2AE2CED000713A1C /* StopWatchTableViewCell.swift */; };
 		E7FC27E42AE2902B003F1868 /* StopWatchUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FC27E32AE2902B003F1868 /* StopWatchUIView.swift */; };
 		E7FC27E72AE2949D003F1868 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E7FC27E62AE2949D003F1868 /* SnapKit */; };
@@ -28,6 +29,7 @@
 		E73D419F2AE2480800DD4680 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E73D41A12AE2480800DD4680 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E79035F62AE2F6D200384005 /* ButtonTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTag.swift; sourceTree = "<group>"; };
+		E7C1A1CC2AE3AA670021155F /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		E7F87D4C2AE2CED000713A1C /* StopWatchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchTableViewCell.swift; sourceTree = "<group>"; };
 		E7FC27E32AE2902B003F1868 /* StopWatchUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,6 +68,7 @@
 			children = (
 				E73D41932AE2480700DD4680 /* AppDelegate.swift */,
 				E73D41952AE2480700DD4680 /* SceneDelegate.swift */,
+				E7C1A1CB2AE3AA530021155F /* Error */,
 				E79035F52AE2F69E00384005 /* Model */,
 				E7F87D4B2AE2CEBF00713A1C /* Cell */,
 				E7FA3E912AE24FEB001F13FD /* View */,
@@ -83,6 +86,14 @@
 				E79035F62AE2F6D200384005 /* ButtonTag.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E7C1A1CB2AE3AA530021155F /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				E7C1A1CC2AE3AA670021155F /* Error.swift */,
+			);
+			path = Error;
 			sourceTree = "<group>";
 		};
 		E7F87D4B2AE2CEBF00713A1C /* Cell */ = {
@@ -191,6 +202,7 @@
 				E73D41982AE2480700DD4680 /* StopWatchController.swift in Sources */,
 				E73D41942AE2480700DD4680 /* AppDelegate.swift in Sources */,
 				E7FC27E42AE2902B003F1868 /* StopWatchUIView.swift in Sources */,
+				E7C1A1CD2AE3AA670021155F /* Error.swift in Sources */,
 				E73D41962AE2480700DD4680 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
