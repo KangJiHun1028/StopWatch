@@ -9,19 +9,29 @@
 /* Begin PBXBuildFile section */
 		E73D41942AE2480700DD4680 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73D41932AE2480700DD4680 /* AppDelegate.swift */; };
 		E73D41962AE2480700DD4680 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73D41952AE2480700DD4680 /* SceneDelegate.swift */; };
-		E73D41982AE2480700DD4680 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73D41972AE2480700DD4680 /* ViewController.swift */; };
+		E73D41982AE2480700DD4680 /* StopWatchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73D41972AE2480700DD4680 /* StopWatchController.swift */; };
 		E73D419D2AE2480800DD4680 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E73D419C2AE2480800DD4680 /* Assets.xcassets */; };
 		E73D41A02AE2480800DD4680 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E73D419E2AE2480800DD4680 /* LaunchScreen.storyboard */; };
+		E79035F72AE2F6D200384005 /* ButtonTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79035F62AE2F6D200384005 /* ButtonTag.swift */; };
+		E7C1A1CD2AE3AA670021155F /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C1A1CC2AE3AA670021155F /* Error.swift */; };
+		E7F87D4D2AE2CED000713A1C /* StopWatchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F87D4C2AE2CED000713A1C /* StopWatchTableViewCell.swift */; };
+		E7FC27E42AE2902B003F1868 /* StopWatchUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FC27E32AE2902B003F1868 /* StopWatchUIView.swift */; };
+		E7FC27E72AE2949D003F1868 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E7FC27E62AE2949D003F1868 /* SnapKit */; };
+		E7FC27E92AE2949D003F1868 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = E7FC27E82AE2949D003F1868 /* SnapKit-Dynamic */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E73D41902AE2480700DD4680 /* StopWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StopWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E73D41932AE2480700DD4680 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E73D41952AE2480700DD4680 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E73D41972AE2480700DD4680 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E73D41972AE2480700DD4680 /* StopWatchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchController.swift; sourceTree = "<group>"; };
 		E73D419C2AE2480800DD4680 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E73D419F2AE2480800DD4680 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E73D41A12AE2480800DD4680 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E79035F62AE2F6D200384005 /* ButtonTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTag.swift; sourceTree = "<group>"; };
+		E7C1A1CC2AE3AA670021155F /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		E7F87D4C2AE2CED000713A1C /* StopWatchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchTableViewCell.swift; sourceTree = "<group>"; };
+		E7FC27E32AE2902B003F1868 /* StopWatchUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +39,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7FC27E72AE2949D003F1868 /* SnapKit in Frameworks */,
+				E7FC27E92AE2949D003F1868 /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,12 +68,56 @@
 			children = (
 				E73D41932AE2480700DD4680 /* AppDelegate.swift */,
 				E73D41952AE2480700DD4680 /* SceneDelegate.swift */,
-				E73D41972AE2480700DD4680 /* ViewController.swift */,
-				E73D419C2AE2480800DD4680 /* Assets.xcassets */,
+				E7C1A1CB2AE3AA530021155F /* Error */,
+				E79035F52AE2F69E00384005 /* Model */,
+				E7F87D4B2AE2CEBF00713A1C /* Cell */,
+				E7FA3E912AE24FEB001F13FD /* View */,
+				E7FA3E902AE24FD1001F13FD /* Controller */,
 				E73D419E2AE2480800DD4680 /* LaunchScreen.storyboard */,
 				E73D41A12AE2480800DD4680 /* Info.plist */,
+				E73D419C2AE2480800DD4680 /* Assets.xcassets */,
 			);
 			path = StopWatch;
+			sourceTree = "<group>";
+		};
+		E79035F52AE2F69E00384005 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E79035F62AE2F6D200384005 /* ButtonTag.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E7C1A1CB2AE3AA530021155F /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				E7C1A1CC2AE3AA670021155F /* Error.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		E7F87D4B2AE2CEBF00713A1C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E7F87D4C2AE2CED000713A1C /* StopWatchTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		E7FA3E902AE24FD1001F13FD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E73D41972AE2480700DD4680 /* StopWatchController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E7FA3E912AE24FEB001F13FD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E7FC27E32AE2902B003F1868 /* StopWatchUIView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -80,6 +136,10 @@
 			dependencies = (
 			);
 			name = StopWatch;
+			packageProductDependencies = (
+				E7FC27E62AE2949D003F1868 /* SnapKit */,
+				E7FC27E82AE2949D003F1868 /* SnapKit-Dynamic */,
+			);
 			productName = StopWatch;
 			productReference = E73D41902AE2480700DD4680 /* StopWatch.app */;
 			productType = "com.apple.product-type.application";
@@ -108,6 +168,9 @@
 				Base,
 			);
 			mainGroup = E73D41872AE2480700DD4680;
+			packageReferences = (
+				E7FC27E52AE2949D003F1868 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = E73D41912AE2480700DD4680 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -134,8 +197,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E73D41982AE2480700DD4680 /* ViewController.swift in Sources */,
+				E7F87D4D2AE2CED000713A1C /* StopWatchTableViewCell.swift in Sources */,
+				E79035F72AE2F6D200384005 /* ButtonTag.swift in Sources */,
+				E73D41982AE2480700DD4680 /* StopWatchController.swift in Sources */,
 				E73D41942AE2480700DD4680 /* AppDelegate.swift in Sources */,
+				E7FC27E42AE2902B003F1868 /* StopWatchUIView.swift in Sources */,
+				E7C1A1CD2AE3AA670021155F /* Error.swift in Sources */,
 				E73D41962AE2480700DD4680 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -349,6 +416,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E7FC27E52AE2949D003F1868 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E7FC27E62AE2949D003F1868 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E7FC27E52AE2949D003F1868 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		E7FC27E82AE2949D003F1868 /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E7FC27E52AE2949D003F1868 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E73D41882AE2480700DD4680 /* Project object */;
 }
