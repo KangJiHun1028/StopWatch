@@ -101,7 +101,6 @@ class StopWatchController: UIViewController {
     }
     
     func makeTimeLabel(count: Int) -> (String) {
-        // return - (TimeLabel, decimalLabel)
         let hundredthSec = count % 100
         let sec = (count / 100) % 60
         let min = (count / 100) / 60
