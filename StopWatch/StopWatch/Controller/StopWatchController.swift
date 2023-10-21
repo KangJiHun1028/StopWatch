@@ -92,6 +92,7 @@ class StopWatchController: UIViewController {
     
     func stopAction() {
         print("stop")
+        mainTimer?.invalidate()
         stopWatchUIView.startButton.isEnabled = true
         stopWatchUIView.stopButton.isEnabled = false
     }
