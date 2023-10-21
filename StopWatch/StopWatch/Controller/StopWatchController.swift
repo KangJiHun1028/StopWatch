@@ -66,16 +66,21 @@ class StopWatchController: UIViewController {
     
     @objc func buttonAction(_ button: UIButton) {
         if let select = ButtonTag(rawValue: button.tag) {
-            switch select {
-            case .start: startAction()
-            case .stop: stopAction()
+            do {
+                switch select {
+                case .start:
+                    try startAction()
+                case .stop:
+                    try stopAction()
+                }
+            } catch {
+                print("오류가 발생했습니다.")
             }
-            
         } else {
-            print("존재하지않는 태그를 가진 버튼의 입력이 들어왔습니다.")
+            print("알 수 없는 버튼 태그입니다.")
         }
     }
-    
+
     func startAction() {
         print("start")
         stopWatchUIView.startButton.isEnabled = false
@@ -105,10 +110,10 @@ class StopWatchController: UIViewController {
         let sec = (count / 100) % 60
         let min = (count / 100) / 60
         
-        let sec_string = "\(sec)".count == 1 ? "0\(sec)" : "\(sec)"
-        let min_string = "\(min)".count == 1 ? "0\(min)" : "\(min)"
-        let hun_string = "\(hundredthSec)".count == 1 ? "0\(hundredthSec)" : "\(hundredthSec)"
-        return "\(min_string):\(sec_string):\(hun_string)"
+        let secString = "\(sec)".count == 1 ? "0\(sec)" : "\(sec)"
+        let minString = "\(min)".count == 1 ? "0\(min)" : "\(min)"
+        let hundredthSecString = "\(hundredthSec)".count == 1 ? "0\(hundredthSec)" : "\(hundredthSec)"
+        return "\(minString):\(secString):\(hundredthSecString)"
     }
 }
 
