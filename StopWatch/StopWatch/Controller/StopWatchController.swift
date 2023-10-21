@@ -80,11 +80,11 @@ class StopWatchController: UIViewController {
         print("start")
         stopWatchUIView.startButton.isEnabled = false
         stopWatchUIView.stopButton.isEnabled = true
-        mainTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { _ in
+        mainTimer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true, block: { _ in
             self.timeCount += 1
             DispatchQueue.main.async {
                 let timeString = self.makeTimeLabel(count: self.timeCount)
-                self.stopWatchUIView.countLabel.text = timeString.0 + ".\(timeString.1)"
+                self.stopWatchUIView.countLabel.text = timeString
             }
         })
     }
@@ -100,15 +100,16 @@ class StopWatchController: UIViewController {
         setButton(button: stopWatchUIView.stopButton, tag: .stop)
     }
     
-    func makeTimeLabel(count: Int) -> (String, String) {
+    func makeTimeLabel(count: Int) -> (String) {
         // return - (TimeLabel, decimalLabel)
-        let decimalSec = count % 10
-        let sec = (count / 10) % 60
-        let min = (count / 10) / 60
+        let hundredthSec = count % 100
+        let sec = (count / 100) % 60
+        let min = (count / 100) / 60
         
         let sec_string = "\(sec)".count == 1 ? "0\(sec)" : "\(sec)"
         let min_string = "\(min)".count == 1 ? "0\(min)" : "\(min)"
-        return ("\(min_string):\(sec_string)", "\(decimalSec)")
+        let hun_string = "\(hundredthSec)".count == 1 ? "0\(hundredthSec)" : "\(hundredthSec)"
+        return "\(min_string):\(sec_string):\(hun_string)"
     }
 }
 
