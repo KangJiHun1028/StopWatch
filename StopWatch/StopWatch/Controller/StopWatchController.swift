@@ -9,12 +9,22 @@ import SnapKit
 import UIKit
 
 class StopWatchController: UIViewController {
+    // MARK: 상수, 변수 선언
+    
     let stopWatchUIView = StopWatchUIView()
     var tableView = UITableView()
     var mainTimer: Timer?
     var timeCount: Int = 0
     var isStopped: Bool = false
     var historyArr = [[String: String]]()
+    let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return formatter
+    }()
+
+    // MARK: 라이프 사이클
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -25,7 +35,9 @@ class StopWatchController: UIViewController {
         buttonInit()
         tableView.reloadData()
     }
-    
+
+    // MARK: UI 설정
+
     private func setupUI() {
         view.addSubview(stopWatchUIView.countLabel)
         view.addSubview(stopWatchUIView.startButton)
@@ -57,7 +69,9 @@ class StopWatchController: UIViewController {
             make.bottom.equalToSuperview()
         }
     }
-    
+
+    // MARK: 함수
+
     func setButton(button: UIButton, tag: ButtonTag) {
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         
@@ -92,8 +106,6 @@ class StopWatchController: UIViewController {
     }
 
     func addLog(status: String, title: String, date: String) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let dateString = dateFormatter.string(from: Date())
 
         let log = ["title": title, "date": dateString, "status": status]
@@ -115,8 +127,6 @@ class StopWatchController: UIViewController {
         let currentStatus = "start"
         let currentTime = makeTimeLabel(count: timeCount)
         let currentDate = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let currentDateString = dateFormatter.string(from: currentDate)
         
         addLog(status: currentStatus, title: currentTime, date: currentDateString)
@@ -131,8 +141,6 @@ class StopWatchController: UIViewController {
         let currentStatus = "stop"
         let currentTime = makeTimeLabel(count: timeCount)
         let currentDate = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let currentDateString = dateFormatter.string(from: currentDate)
         
         addLog(status: currentStatus, title: currentTime, date: currentDateString)
@@ -150,8 +158,6 @@ class StopWatchController: UIViewController {
         let currentStatus = "reset"
         let currentTime = makeTimeLabel(count: timeCount)
         let currentDate = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let currentDateString = dateFormatter.string(from: currentDate)
         
         addLog(status: currentStatus, title: currentTime, date: currentDateString)
@@ -173,6 +179,8 @@ class StopWatchController: UIViewController {
         return "\(minString):\(secString):\(hundredthSecString)"
     }
 }
+
+// MARK: Cell 설정
 
 extension StopWatchController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
