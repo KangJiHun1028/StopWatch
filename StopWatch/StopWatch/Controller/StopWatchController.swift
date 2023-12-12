@@ -11,7 +11,6 @@ import UIKit
 class StopWatchController: UIViewController {
     // MARK: 상수, 변수 선언
     
-    
     let stopWatchUIView = StopWatchUIView()
     var tableView = UITableView()
     var mainTimer: Timer?
@@ -113,6 +112,15 @@ class StopWatchController: UIViewController {
         historyArr.append(log)
         tableView.reloadData()
     }
+    
+    func addLogAndReload(status: String) {
+        let currentTime = makeTimeLabel(count: timeCount)
+        let currentDate = Date()
+        let currentDateString = dateFormatter.string(from: currentDate)
+        
+        addLog(status: status, title: currentTime, date: currentDateString)
+        tableView.reloadData()
+    }
 
     func startAction() {
         print("start")
@@ -125,12 +133,7 @@ class StopWatchController: UIViewController {
                 self.stopWatchUIView.countLabel.text = timeString
             }
         })
-        let currentStatus = "start"
-        let currentTime = makeTimeLabel(count: timeCount)
-        let currentDate = Date()
-        let currentDateString = dateFormatter.string(from: currentDate)
-        
-        addLog(status: currentStatus, title: currentTime, date: currentDateString)
+        addLogAndReload(status: "start")
     }
     
     func stopAction() {
@@ -139,12 +142,7 @@ class StopWatchController: UIViewController {
         stopWatchUIView.startButton.isEnabled = true
         stopWatchUIView.stopButton.isEnabled = true
         isStopped = true
-        let currentStatus = "stop"
-        let currentTime = makeTimeLabel(count: timeCount)
-        let currentDate = Date()
-        let currentDateString = dateFormatter.string(from: currentDate)
-        
-        addLog(status: currentStatus, title: currentTime, date: currentDateString)
+        addLogAndReload(status: "stop")
     }
     
     func resetAction() {
@@ -156,12 +154,7 @@ class StopWatchController: UIViewController {
         stopWatchUIView.startButton.isEnabled = true
         stopWatchUIView.stopButton.isEnabled = false
         isStopped = false
-        let currentStatus = "reset"
-        let currentTime = makeTimeLabel(count: timeCount)
-        let currentDate = Date()
-        let currentDateString = dateFormatter.string(from: currentDate)
-        
-        addLog(status: currentStatus, title: currentTime, date: currentDateString)
+        addLogAndReload(status: "reset")
     }
     
     func buttonInit() {

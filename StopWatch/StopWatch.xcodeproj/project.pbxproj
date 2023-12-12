@@ -70,7 +70,6 @@
 				E73D41952AE2480700DD4680 /* SceneDelegate.swift */,
 				E7C1A1CB2AE3AA530021155F /* Error */,
 				E79035F52AE2F69E00384005 /* Model */,
-				E7F87D4B2AE2CEBF00713A1C /* Cell */,
 				E7FA3E912AE24FEB001F13FD /* View */,
 				E7FA3E902AE24FD1001F13FD /* Controller */,
 				E73D419E2AE2480800DD4680 /* LaunchScreen.storyboard */,
@@ -115,6 +114,7 @@
 		E7FA3E912AE24FEB001F13FD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E7F87D4B2AE2CEBF00713A1C /* Cell */,
 				E7FC27E32AE2902B003F1868 /* StopWatchUIView.swift */,
 			);
 			path = View;
