@@ -14,7 +14,7 @@
 		E73D41A02AE2480800DD4680 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E73D419E2AE2480800DD4680 /* LaunchScreen.storyboard */; };
 		E79035F72AE2F6D200384005 /* ButtonTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79035F62AE2F6D200384005 /* ButtonTag.swift */; };
 		E7C1A1CD2AE3AA670021155F /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C1A1CC2AE3AA670021155F /* Error.swift */; };
-		E7F87D4D2AE2CED000713A1C /* StopWatchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F87D4C2AE2CED000713A1C /* StopWatchTableViewCell.swift */; };
+		E7F87D4D2AE2CED000713A1C /* LogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F87D4C2AE2CED000713A1C /* LogTableViewCell.swift */; };
 		E7FC27E42AE2902B003F1868 /* StopWatchUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FC27E32AE2902B003F1868 /* StopWatchUIView.swift */; };
 		E7FC27E72AE2949D003F1868 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E7FC27E62AE2949D003F1868 /* SnapKit */; };
 		E7FC27E92AE2949D003F1868 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = E7FC27E82AE2949D003F1868 /* SnapKit-Dynamic */; };
@@ -30,7 +30,7 @@
 		E73D41A12AE2480800DD4680 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E79035F62AE2F6D200384005 /* ButtonTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTag.swift; sourceTree = "<group>"; };
 		E7C1A1CC2AE3AA670021155F /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
-		E7F87D4C2AE2CED000713A1C /* StopWatchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchTableViewCell.swift; sourceTree = "<group>"; };
+		E7F87D4C2AE2CED000713A1C /* LogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogTableViewCell.swift; sourceTree = "<group>"; };
 		E7FC27E32AE2902B003F1868 /* StopWatchUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,7 +70,6 @@
 				E73D41952AE2480700DD4680 /* SceneDelegate.swift */,
 				E7C1A1CB2AE3AA530021155F /* Error */,
 				E79035F52AE2F69E00384005 /* Model */,
-				E7F87D4B2AE2CEBF00713A1C /* Cell */,
 				E7FA3E912AE24FEB001F13FD /* View */,
 				E7FA3E902AE24FD1001F13FD /* Controller */,
 				E73D419E2AE2480800DD4680 /* LaunchScreen.storyboard */,
@@ -99,7 +98,7 @@
 		E7F87D4B2AE2CEBF00713A1C /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				E7F87D4C2AE2CED000713A1C /* StopWatchTableViewCell.swift */,
+				E7F87D4C2AE2CED000713A1C /* LogTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -115,6 +114,7 @@
 		E7FA3E912AE24FEB001F13FD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E7F87D4B2AE2CEBF00713A1C /* Cell */,
 				E7FC27E32AE2902B003F1868 /* StopWatchUIView.swift */,
 			);
 			path = View;
@@ -197,7 +197,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7F87D4D2AE2CED000713A1C /* StopWatchTableViewCell.swift in Sources */,
+				E7F87D4D2AE2CED000713A1C /* LogTableViewCell.swift in Sources */,
 				E79035F72AE2F6D200384005 /* ButtonTag.swift in Sources */,
 				E73D41982AE2480700DD4680 /* StopWatchController.swift in Sources */,
 				E73D41942AE2480700DD4680 /* AppDelegate.swift in Sources */,

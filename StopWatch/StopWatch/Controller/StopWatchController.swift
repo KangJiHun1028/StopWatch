@@ -9,29 +9,41 @@ import SnapKit
 import UIKit
 
 class StopWatchController: UIViewController {
+    // MARK: 상수, 변수 선언
+    
     let stopWatchUIView = StopWatchUIView()
     var tableView = UITableView()
     var mainTimer: Timer?
     var timeCount: Int = 0
     var isStopped: Bool = false
+    var historyArr = [[String: String]]()
+    let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return formatter
+    }()
+
+    // MARK: 라이프 사이클
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         
-        tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: StopWatchTableViewCell.identifier)
         
         setupUI()
         buttonInit()
+        tableView.reloadData()
     }
-    
+
+    // MARK: UI 설정
+
     private func setupUI() {
         view.addSubview(stopWatchUIView.countLabel)
         view.addSubview(stopWatchUIView.startButton)
         view.addSubview(stopWatchUIView.stopButton)
         view.addSubview(tableView)
-        
+        tableView.register(LogTableViewCell.self, forCellReuseIdentifier: LogTableViewCell.identifier)
         stopWatchUIView.countLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(250)
             make.centerX.equalTo(view.snp.centerX)
@@ -49,16 +61,17 @@ class StopWatchController: UIViewController {
             make.centerY.equalTo(view.snp.centerY)
             make.height.equalTo(50)
             make.width.equalTo(150)
-            
-            tableView.snp.makeConstraints { make in
-                make.top.equalTo(stopWatchUIView.stopButton.snp.bottom).offset(20)
-                make.leading.trailing.equalToSuperview()
-                // 화면에 하단에서 부터 조정
-                make.bottom.equalToSuperview()
-            }
+        }
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(stopWatchUIView.stopButton.snp.bottom).offset(20)
+            make.leading.trailing.equalToSuperview()
+            // 화면에 하단에서 부터 조정
+            make.bottom.equalToSuperview()
         }
     }
-    
+
+    // MARK: 함수
+
     func setButton(button: UIButton, tag: ButtonTag) {
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         
@@ -74,7 +87,7 @@ class StopWatchController: UIViewController {
             print("알 수 없는 오류 발생")
         }
     }
-
+    
     func handleButtonAction(_ button: UIButton) throws {
         if let select = ButtonTag(rawValue: button.tag) {
             switch select {
@@ -92,6 +105,23 @@ class StopWatchController: UIViewController {
         }
     }
 
+    func addLog(status: String, title: String, date: String) {
+        let dateString = dateFormatter.string(from: Date())
+
+        let log = ["title": title, "date": dateString, "status": status]
+        historyArr.append(log)
+        tableView.reloadData()
+    }
+    
+    func addLogAndReload(status: String) {
+        let currentTime = makeTimeLabel(count: timeCount)
+        let currentDate = Date()
+        let currentDateString = dateFormatter.string(from: currentDate)
+        
+        addLog(status: status, title: currentTime, date: currentDateString)
+        tableView.reloadData()
+    }
+
     func startAction() {
         print("start")
         stopWatchUIView.startButton.isEnabled = false
@@ -103,16 +133,18 @@ class StopWatchController: UIViewController {
                 self.stopWatchUIView.countLabel.text = timeString
             }
         })
+        addLogAndReload(status: "start")
     }
-        
+    
     func stopAction() {
         print("stop")
         mainTimer?.invalidate()
         stopWatchUIView.startButton.isEnabled = true
         stopWatchUIView.stopButton.isEnabled = true
         isStopped = true
+        addLogAndReload(status: "stop")
     }
-
+    
     func resetAction() {
         print("reset")
         mainTimer?.invalidate()
@@ -122,33 +154,39 @@ class StopWatchController: UIViewController {
         stopWatchUIView.startButton.isEnabled = true
         stopWatchUIView.stopButton.isEnabled = false
         isStopped = false
+        addLogAndReload(status: "reset")
     }
-
+    
     func buttonInit() {
         setButton(button: stopWatchUIView.startButton, tag: .start)
         setButton(button: stopWatchUIView.stopButton, tag: .stop)
     }
-        
+    
     func makeTimeLabel(count: Int) -> (String) {
         let hundredthSec = count % 100
         let sec = (count / 100) % 60
         let min = (count / 100) / 60
-            
+        
         let secString = "\(sec)".count == 1 ? "0\(sec)" : "\(sec)"
         let minString = "\(min)".count == 1 ? "0\(min)" : "\(min)"
         let hundredthSecString = "\(hundredthSec)".count == 1 ? "0\(hundredthSec)" : "\(hundredthSec)"
         return "\(minString):\(secString):\(hundredthSecString)"
     }
 }
-    
-extension StopWatchController: UITableViewDelegate, UITableViewDataSource {
+
+// MARK: Cell 설정
+
+extension StopWatchController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return historyArr.count
     }
-        
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: StopWatchTableViewCell.identifier, for: indexPath)
-            
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: LogTableViewCell.identifier, for: indexPath) as? LogTableViewCell else {
+            return UITableViewCell()
+        }
+        let log = historyArr[indexPath.row]
+        cell.configure(with: log)
         return cell
     }
 }

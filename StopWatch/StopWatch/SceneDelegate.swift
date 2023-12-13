@@ -15,7 +15,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         window?.rootViewController = StopWatchController()
-        window?.makeKeyAndVisible()
+        window?.makeKeyAndVisible()         
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
