@@ -50,3 +50,11 @@ protocol NameProtocol {
 }
 ```
 <img width="659" alt="스크린샷 2023-10-20 오후 2 26 07" src="https://github.com/KangJiHun1028/StopWatch/assets/136081642/42eab49c-5c33-4bd2-ab07-efba6983b101">
+
+
+## 완성 시연
+
+<img width="300" src="https://github.com/KangJiHun1028/StopWatch/assets/136081642/ff106a7d-0467-4a91-93d4-09b713b24ed2">
+
+
+
